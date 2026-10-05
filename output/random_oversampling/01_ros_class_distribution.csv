@@ -1,0 +1,4 @@
+Class,Nama Class,Sebelum ROS,Sesudah ROS,Testing (tidak di-resampling)
+0,Non-Diabetic,77,102,19
+1,Diabetic,32,102,8
+2,Predict-Diabetic,102,102,26

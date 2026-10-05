@@ -1,0 +1,11 @@
+Random Oversampling + Decision Tree
+============================================================
+                      precision    recall  f1-score   support
+
+    0 - Non-Diabetic     0.9474    0.9474    0.9474        19
+        1 - Diabetic     0.8750    0.8750    0.8750         8
+2 - Predict-Diabetic     0.9231    0.9231    0.9231        26
+
+            accuracy                         0.9245        53
+           macro avg     0.9151    0.9151    0.9151        53
+        weighted avg     0.9245    0.9245    0.9245        53

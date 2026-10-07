@@ -1,0 +1,4 @@
+Class,Nama Class,Sebelum SMOTE,Sesudah SMOTE,Testing (tidak di-resampling)
+0,Non-Diabetic,77,102,19
+1,Predict-Diabetic,32,102,8
+2,Diabetic,102,102,26

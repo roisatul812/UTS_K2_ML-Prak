@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from imblearn.over_sampling import SMOTE
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, export_text, plot_tree
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
     accuracy_score,
@@ -239,7 +239,40 @@ plt.savefig(OUTPUT_DIR / "10_smote_feature_importance.png", dpi=150)
 plt.close()
 
 
-# ===== 9. SELESAI =====
+# ===== 9. VISUALISASI DECISION TREE =====
+# Nilai threshold pada gambar dan teks aturan masih dalam skala standar
+# (hasil StandardScaler), bukan satuan asli fitur.
+
+feature_names = list(X_train.columns)
+class_labels = [f"{int(c)} - {CLASS_NAMES[int(c)]}" for c in dt_smote.classes_]
+
+fig, ax = plt.subplots(figsize=(22, 10))
+plot_tree(
+    dt_smote,
+    feature_names=feature_names,
+    class_names=class_labels,
+    filled=True,
+    rounded=True,
+    fontsize=9,
+    ax=ax,
+)
+ax.set_title("Decision Tree - SMOTE", fontsize=14)
+plt.tight_layout()
+plt.savefig(OUTPUT_DIR / "11_smote_decision_tree.png", dpi=150)
+plt.close()
+
+tree_rules = export_text(dt_smote, feature_names=feature_names)
+print("\n=== ATURAN DECISION TREE ===")
+print(tree_rules)
+
+with open(OUTPUT_DIR / "12_smote_decision_tree_rules.txt", "w", encoding="utf-8") as f:
+    f.write("SMOTE + Decision Tree\n")
+    f.write("Catatan: nilai threshold dalam skala standar (StandardScaler).\n")
+    f.write("=" * 60 + "\n")
+    f.write(tree_rules)
+
+
+# ===== 10. SELESAI =====
 
 print("\n=== SMOTE + DECISION TREE SELESAI ===")
 print("Output tersimpan di :", OUTPUT_DIR)

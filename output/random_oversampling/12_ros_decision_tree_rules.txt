@@ -1,0 +1,25 @@
+Aturan Decision Tree (Random Oversampling)
+Class: 0 = Non-Diabetic, 1 = Predict-Diabetic, 2 = Diabetic
+============================================================
+|--- HbA1c <= -0.50
+|   |--- BMI <= -0.35
+|   |   |--- Cr <= -1.47
+|   |   |   |--- BMI <= -0.91
+|   |   |   |   |--- class: 0
+|   |   |   |--- BMI >  -0.91
+|   |   |   |   |--- class: 2
+|   |   |--- Cr >  -1.47
+|   |   |   |--- class: 0
+|   |--- BMI >  -0.35
+|   |   |--- class: 2
+|--- HbA1c >  -0.50
+|   |--- HbA1c <= -0.12
+|   |   |--- AGE <= 0.62
+|   |   |   |--- BMI <= 1.00
+|   |   |   |   |--- class: 1
+|   |   |   |--- BMI >  1.00
+|   |   |   |   |--- class: 2
+|   |   |--- AGE >  0.62
+|   |   |   |--- class: 2
+|   |--- HbA1c >  -0.12
+|   |   |--- class: 2
